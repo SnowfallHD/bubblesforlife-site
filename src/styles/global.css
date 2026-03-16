@@ -172,6 +172,43 @@ a {
 	animation: drift 15s ease-in-out infinite;
 }
 
+.page-load-bubbles {
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.page-load-bubble {
+	position: absolute;
+	left: var(--bubble-left);
+	bottom: calc(var(--bubble-size) * -1.4);
+	width: var(--bubble-size);
+	height: var(--bubble-size);
+	opacity: 0;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.74);
+	background:
+		radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.52) 28%, rgba(146, 224, 255, 0.18) 72%, rgba(255, 255, 255, 0.06) 100%);
+	box-shadow:
+		inset 0 2px 0 rgba(255, 255, 255, 0.9),
+		0 22px 44px rgba(28, 119, 170, 0.14);
+	animation: page-load-rise var(--bubble-duration) cubic-bezier(0.22, 0.8, 0.25, 1) var(--bubble-delay) forwards;
+}
+
+.page-load-bubble::before {
+	content: "";
+	position: absolute;
+	top: 18%;
+	left: 22%;
+	width: 26%;
+	height: 26%;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.58);
+	filter: blur(1px);
+}
+
 @keyframes drift {
 	0%,
 	100% {
@@ -180,6 +217,26 @@ a {
 
 	50% {
 		transform: translate3d(0, -18px, 0) scale(1.03);
+	}
+}
+
+@keyframes page-load-rise {
+	0% {
+		transform: translate3d(0, 0, 0) scale(0.82);
+		opacity: 0;
+	}
+
+	12% {
+		opacity: var(--bubble-opacity);
+	}
+
+	72% {
+		opacity: calc(var(--bubble-opacity) * 0.94);
+	}
+
+	100% {
+		transform: translate3d(var(--bubble-drift), -118vh, 0) scale(1.08);
+		opacity: 0;
 	}
 }
 
@@ -194,6 +251,10 @@ a {
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	.page-load-bubbles {
+		display: none;
 	}
 
 	*,

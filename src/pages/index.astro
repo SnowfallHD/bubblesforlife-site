@@ -42,6 +42,20 @@ const ordinaryMoments = [
 	'A tear',
 ];
 
+const loadBubbles = [
+	{ size: '4.5rem', left: '4%', duration: '6.8s', delay: '0s', opacity: '0.7', drift: '-1.4rem' },
+	{ size: '7rem', left: '12%', duration: '8.6s', delay: '0.2s', opacity: '0.75', drift: '1rem' },
+	{ size: '3.6rem', left: '24%', duration: '6.2s', delay: '0.45s', opacity: '0.66', drift: '-0.6rem' },
+	{ size: '5.2rem', left: '33%', duration: '8.1s', delay: '0.15s', opacity: '0.72', drift: '1.2rem' },
+	{ size: '3rem', left: '46%', duration: '5.9s', delay: '0.8s', opacity: '0.62', drift: '-0.8rem' },
+	{ size: '8.8rem', left: '55%', duration: '9.5s', delay: '0.05s', opacity: '0.78', drift: '1.6rem' },
+	{ size: '4.2rem', left: '64%', duration: '7.1s', delay: '0.95s', opacity: '0.68', drift: '-1rem' },
+	{ size: '6rem', left: '73%', duration: '8.3s', delay: '0.35s', opacity: '0.73', drift: '0.9rem' },
+	{ size: '3.4rem', left: '81%', duration: '6.6s', delay: '1.1s', opacity: '0.64', drift: '-0.5rem' },
+	{ size: '5.8rem', left: '88%', duration: '7.8s', delay: '0.5s', opacity: '0.7', drift: '1.3rem' },
+	{ size: '2.8rem', left: '92%', duration: '6.1s', delay: '1.35s', opacity: '0.58', drift: '-0.9rem' },
+];
+
 const bookSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Book',
@@ -72,6 +86,16 @@ const bookSchema = {
 	</head>
 	<body class="overflow-x-hidden">
 		<div class="page-shell relative isolate min-h-screen">
+			<div aria-hidden="true" class="page-load-bubbles">
+				{
+					loadBubbles.map((bubble) => (
+						<span
+							class="page-load-bubble"
+							style={`--bubble-size:${bubble.size}; --bubble-left:${bubble.left}; --bubble-duration:${bubble.duration}; --bubble-delay:${bubble.delay}; --bubble-opacity:${bubble.opacity}; --bubble-drift:${bubble.drift};`}
+						></span>
+					))
+				}
+			</div>
 			<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 				<div class="ambient-bubble left-[5%] top-20 h-40 w-40 lg:h-56 lg:w-56"></div>
 				<div
