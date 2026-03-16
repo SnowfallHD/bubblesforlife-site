@@ -1,17 +1,357 @@
 ---
+import '../styles/global.css';
 
+const amazonUrl =
+	'https://www.amazon.com/Bubbles-Life-Mark-Nusbaum/dp/B0G6KB64T5';
+const facebookUrl = '';
+const title = 'Bubbles For Life | A Book by Mark Nusbaum';
+const description =
+	'Bubbles For Life invites weary readers to slow down, breathe deeply, and rediscover wonder through seven soul-refreshing chapters.';
+
+const chapterTitles = [
+	'Live in Wonder and Amazement',
+	'Live Light-Heartedly',
+	'Live With Tears',
+	'Living Free Again',
+	'Live With Laughter',
+	'Blow Your Own Bubbles',
+	'Kingdom Rhythm',
+];
+
+const reflectionCards = [
+	{
+		title: 'Slow Down Again',
+		copy: 'Move against the rush and make room for beauty, breath, and holy interruption.',
+	},
+	{
+		title: 'See the Sacred',
+		copy: 'This book is not about escaping real life. It is about seeing grace inside it.',
+	},
+	{
+		title: 'Let Joy Rise',
+		copy: 'Rediscover light-hearted living, honest tears, laughter, freedom, and rhythm.',
+	},
+];
+
+const ordinaryMoments = [
+	'Sunlight through blinds',
+	'A whispered prayer',
+	'A giggle',
+	'A tear',
+];
+
+const bookSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Book',
+	name: 'Bubbles For Life',
+	author: {
+		'@type': 'Person',
+		name: 'Mark Nusbaum',
+	},
+	isbn: '9798284795941',
+	description,
+	sameAs: amazonUrl,
+	url: amazonUrl,
+};
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#7cd6ff" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<title>{title}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(bookSchema)}></script>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="overflow-x-hidden">
+		<div class="page-shell relative isolate min-h-screen">
+			<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+				<div class="ambient-bubble left-[5%] top-20 h-40 w-40 lg:h-56 lg:w-56"></div>
+				<div
+					class="ambient-bubble left-[78%] top-32 h-24 w-24"
+					style="animation-delay: -4s;"
+				></div>
+				<div
+					class="ambient-bubble left-[82%] top-[42rem] hidden h-44 w-44 md:block"
+					style="animation-delay: -6s;"
+				></div>
+				<div
+					class="ambient-bubble left-[14%] top-[55rem] hidden h-20 w-20 md:block"
+					style="animation-delay: -8s;"
+				></div>
+				<div
+					class="ambient-bubble left-[62%] top-[78rem] hidden h-28 w-28 lg:block"
+					style="animation-delay: -10s;"
+				></div>
+			</div>
+
+			<header class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
+				<a class="flex items-center gap-3" href="#top" aria-label="Bubbles For Life home">
+					<div class="bubble-pill flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-sky-700">
+						B
+					</div>
+					<div>
+						<p class="display-font text-lg font-bold tracking-[0.2em] text-sky-900">Bubbles For Life</p>
+						<p class="text-sm font-medium text-sky-700/80">Mark Nusbaum</p>
+					</div>
+				</a>
+
+				<div class="hidden items-center gap-3 md:flex">
+					<a class="button-secondary" href="#chapters">Explore the Chapters</a>
+					<a class="button-primary" href={amazonUrl} target="_blank" rel="noreferrer">
+						Buy on Amazon
+					</a>
+				</div>
+			</header>
+
+			<main id="top">
+				<section class="mx-auto grid max-w-7xl gap-14 px-6 pb-16 pt-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pb-24 lg:pt-14">
+					<div class="flex flex-col justify-center">
+						<div class="bubble-pill mb-6 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold tracking-[0.16em] text-sky-800 uppercase">
+							<span class="h-2.5 w-2.5 rounded-full bg-sky-400"></span>
+							Now on Amazon
+						</div>
+
+						<h1 class="display-font max-w-3xl text-5xl font-bold leading-[0.92] text-sky-950 sm:text-6xl lg:text-7xl">
+							You weren&apos;t made for exhaustion.
+							<span class="mt-3 block text-sky-700">You were made for wonder.</span>
+						</h1>
+
+						<p class="mt-6 max-w-2xl text-lg leading-8 text-sky-900/78 sm:text-xl">
+							<span class="font-semibold text-sky-900">Bubbles For Life</span> by Mark
+							Nusbaum invites you to slow down, breathe deeply, and see again with
+							childlike eyes. It is a clean, reflective read for anyone ready to let
+							beauty interrupt the noise.
+						</p>
+
+						<p class="mt-4 max-w-2xl text-base leading-7 text-sky-900/70 sm:text-lg">
+							This isn&apos;t a book about escaping reality. It&apos;s about seeing the sacred
+							within it: in sunlight through blinds, a whispered prayer, a giggle, a
+							tear.
+						</p>
+
+						<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+							<a class="button-primary justify-center sm:justify-start" href={amazonUrl} target="_blank" rel="noreferrer">
+								Buy the Book on Amazon
+							</a>
+							{
+								facebookUrl ? (
+									<a class="button-secondary justify-center sm:justify-start" href={facebookUrl}>
+										Join the Facebook Community
+									</a>
+								) : (
+									<div class="button-disabled justify-center sm:justify-start">
+										Facebook community link coming soon
+									</div>
+								)
+							}
+						</div>
+
+						<div class="mt-8 grid gap-4 sm:grid-cols-3">
+							<div class="glass-panel rounded-3xl p-5">
+								<p class="text-3xl font-extrabold text-sky-900">7</p>
+								<p class="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-sky-700">
+									Soul-refreshing chapters
+								</p>
+							</div>
+							<div class="glass-panel rounded-3xl p-5">
+								<p class="text-3xl font-extrabold text-sky-900">1</p>
+								<p class="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-sky-700">
+									Clear invitation to wonder
+								</p>
+							</div>
+							<div class="glass-panel rounded-3xl p-5">
+								<p class="text-3xl font-extrabold text-sky-900">∞</p>
+								<p class="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-sky-700">
+									Small holy moments to notice
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="relative flex items-center justify-center">
+						<div class="hero-book w-full max-w-xl rounded-[2rem] p-5 sm:p-7">
+							<div class="relative overflow-hidden rounded-[1.7rem] border border-white/35 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-sm sm:p-6">
+								<div class="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_55%)]"></div>
+								<img
+									class="relative z-10 mx-auto w-full max-w-[24rem] rounded-[1.3rem] shadow-[0_32px_60px_rgba(10,73,113,0.28)]"
+									src="/book-cover.svg"
+									alt="Illustrated Bubbles For Life book cover"
+								/>
+							</div>
+
+							<div class="mt-6 grid gap-3 sm:grid-cols-2">
+								<div class="rounded-[1.6rem] bg-white/16 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
+									<p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/72">
+										For readers who feel
+									</p>
+									<p class="mt-3 text-2xl font-semibold leading-tight">Worn thin, rushed, or ready to breathe again.</p>
+								</div>
+								<div class="rounded-[1.6rem] bg-white/16 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
+									<p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/72">
+										Core invitation
+									</p>
+									<p class="mt-3 text-2xl font-semibold leading-tight">Let go of the heavy. Let joy rise.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+					<div class="glass-panel rounded-[2rem] p-7 sm:p-10">
+						<div class="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+							<div>
+								<p class="text-sm font-semibold uppercase tracking-[0.22em] text-sky-700">Inside the Book</p>
+								<h2 class="display-font mt-3 text-4xl font-bold leading-tight text-sky-950 sm:text-5xl">
+									A modern invitation to notice beauty without pretending life is easy.
+								</h2>
+							</div>
+							<div class="grid gap-4 md:grid-cols-3">
+								{
+									reflectionCards.map((card) => (
+										<article class="rounded-[1.8rem] border border-white/55 bg-white/58 p-6 shadow-[0_18px_40px_rgba(34,120,171,0.1)] backdrop-blur-sm">
+											<h3 class="text-xl font-bold text-sky-900">{card.title}</h3>
+											<p class="mt-3 text-base leading-7 text-sky-900/72">{card.copy}</p>
+										</article>
+									))
+								}
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="chapters" class="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
+					<div class="mx-auto max-w-3xl text-center">
+						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-sky-700">Seven Chapters</p>
+						<h2 class="display-font mt-4 text-4xl font-bold text-sky-950 sm:text-5xl">
+							Rediscover how to live with wonder, tears, laughter, freedom, and rhythm.
+						</h2>
+					</div>
+
+					<div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+						{
+							chapterTitles.map((chapter, index) => (
+								<div class="bubble-card flex items-start gap-4 rounded-[1.8rem] p-5">
+									<div class="bubble-pill flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-sky-800">
+										0{index + 1}
+									</div>
+									<div>
+										<p class="text-sm font-semibold uppercase tracking-[0.16em] text-sky-700">Chapter {index + 1}</p>
+										<h3 class="mt-2 text-xl font-bold leading-snug text-sky-950">{chapter}</h3>
+									</div>
+								</div>
+							))
+						}
+					</div>
+				</section>
+
+				<section class="mx-auto max-w-7xl px-6 py-6 lg:px-10">
+					<div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+						<div class="glass-panel rounded-[2rem] p-7 sm:p-10">
+							<p class="text-sm font-semibold uppercase tracking-[0.22em] text-sky-700">Sacred in the Ordinary</p>
+							<h2 class="display-font mt-3 max-w-2xl text-4xl font-bold leading-tight text-sky-950 sm:text-5xl">
+								Let beauty interrupt you like a bubble catching the light.
+							</h2>
+							<div class="mt-6 space-y-5 text-lg leading-8 text-sky-900/74">
+								<p>
+									In a world rushing past beauty, <span class="font-semibold text-sky-900">Bubbles For Life</span>
+									invites you to stop moving on autopilot and notice what God might be doing in
+									the small moments.
+								</p>
+								<p>
+									It offers a gentler rhythm for readers who are carrying weight, but who still want
+									honest spirituality, not polished escape. The tone is hopeful, grounded, and warm.
+								</p>
+							</div>
+							<div class="mt-8 flex flex-wrap gap-3">
+								{
+									ordinaryMoments.map((moment) => (
+										<div class="bubble-pill rounded-full px-4 py-2 text-sm font-semibold text-sky-800">
+											{moment}
+										</div>
+									))
+								}
+							</div>
+						</div>
+
+						<aside class="relative overflow-hidden rounded-[2rem] bg-sky-950 p-7 text-white shadow-[0_28px_70px_rgba(11,58,86,0.22)] sm:p-10">
+							<div class="absolute right-6 top-6 h-20 w-20 rounded-full border border-white/25 bg-white/10 blur-[1px]"></div>
+							<div class="absolute bottom-8 left-6 h-28 w-28 rounded-full border border-white/18 bg-white/10"></div>
+							<p class="text-sm font-semibold uppercase tracking-[0.22em] text-sky-200">Reader Takeaway</p>
+							<blockquote class="display-font mt-4 text-3xl font-semibold leading-tight text-white sm:text-4xl">
+								&quot;This isn&apos;t a book about escaping reality. It&apos;s about seeing the sacred within it.&quot;
+							</blockquote>
+							<p class="mt-6 max-w-md text-base leading-7 text-sky-100/84">
+								That perspective anchors the whole page and the whole book. If that line resonates,
+								the clearest next step is to read it on Amazon.
+							</p>
+							<a class="button-primary mt-8 inline-flex" href={amazonUrl} target="_blank" rel="noreferrer">
+								Open the Amazon Listing
+							</a>
+						</aside>
+					</div>
+				</section>
+
+				<section class="mx-auto max-w-7xl px-6 pb-24 pt-14 lg:px-10">
+					<div class="hero-book overflow-hidden rounded-[2rem] p-8 sm:p-10">
+						<div class="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+							<div>
+								<p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/74">Ready to Read?</p>
+								<h2 class="display-font mt-3 max-w-2xl text-4xl font-bold leading-tight text-white sm:text-5xl">
+									Bring more wonder, more breath, and more joy into the way you live.
+								</h2>
+								<p class="mt-5 max-w-2xl text-lg leading-8 text-white/84">
+									Buy the book now on Amazon, then come back for the Facebook community when that
+									link goes live.
+								</p>
+							</div>
+
+							<div class="glass-panel rounded-[1.8rem] p-6">
+								<div class="flex flex-col gap-3">
+									<a class="button-primary justify-center" href={amazonUrl} target="_blank" rel="noreferrer">
+										Buy Bubbles For Life on Amazon
+									</a>
+									{
+										facebookUrl ? (
+											<a class="button-secondary justify-center bg-white/80" href={facebookUrl}>
+												Join the Facebook Community
+											</a>
+										) : (
+											<div class="button-disabled justify-center bg-white/78">
+												Facebook community link coming soon
+											</div>
+										)
+									}
+								</div>
+								<p class="mt-4 text-sm leading-6 text-sky-900/70">
+									Keep the Amazon button as the primary conversion path. Replace the Facebook URL later
+									by editing the <code>facebookUrl</code> constant in this page.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<div class="fixed inset-x-4 bottom-4 z-40 md:hidden">
+				<div class="glass-panel rounded-[1.4rem] px-4 py-3">
+					<div class="flex items-center justify-between gap-4">
+						<div>
+							<p class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Bubbles For Life</p>
+							<p class="text-sm font-medium text-sky-900">Buy the book on Amazon</p>
+						</div>
+						<a class="button-primary shrink-0 px-4 py-3 text-sm" href={amazonUrl} target="_blank" rel="noreferrer">
+							Buy Now
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
