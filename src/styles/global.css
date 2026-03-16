@@ -247,6 +247,10 @@ a {
 	.button-disabled {
 		width: 100%;
 	}
+
+	.button-inline-mobile {
+		width: auto;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
