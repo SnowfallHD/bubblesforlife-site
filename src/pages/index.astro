@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import coverImage from '../assets/bubbles-for-life-cover.jpg';
 import '../styles/global.css';
 
 const amazonUrl =
@@ -176,23 +178,29 @@ const bookSchema = {
 
 					<div class="relative flex items-center justify-center">
 						<div class="hero-book w-full max-w-xl rounded-[2rem] p-5 sm:p-7">
-							<div class="relative overflow-hidden rounded-[1.7rem] border border-white/35 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-sm sm:p-6">
+							<div class="relative overflow-hidden rounded-[1.7rem] border border-white/35 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl sm:p-6">
 								<div class="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_55%)]"></div>
-								<img
+								<Image
 									class="relative z-10 mx-auto w-full max-w-[24rem] rounded-[1.3rem] shadow-[0_32px_60px_rgba(10,73,113,0.28)]"
-									src="/book-cover.svg"
-									alt="Illustrated Bubbles For Life book cover"
+									src={coverImage}
+									alt="Bubbles For Life book cover"
+									width={432}
+									sizes="(max-width: 640px) 78vw, (max-width: 1024px) 26rem, 24rem"
+									quality={90}
+									loading="eager"
+									decoding="async"
+									fetchpriority="high"
 								/>
 							</div>
 
 							<div class="mt-6 grid gap-3 sm:grid-cols-2">
-								<div class="rounded-[1.6rem] bg-white/16 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
+								<div class="rounded-[1.6rem] border border-white/18 bg-white/16 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-xl">
 									<p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/72">
 										For readers who feel
 									</p>
 									<p class="mt-3 text-2xl font-semibold leading-tight">Worn thin, rushed, or ready to breathe again.</p>
 								</div>
-								<div class="rounded-[1.6rem] bg-white/16 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
+								<div class="rounded-[1.6rem] border border-white/18 bg-white/16 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-xl">
 									<p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/72">
 										Core invitation
 									</p>
